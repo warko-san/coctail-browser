@@ -7,17 +7,15 @@ plugins {
 
 android {
 
-    def globalConfig = rootProject.ext
-
     namespace 'com.warko.coctailbrowser'
-    compileSdk globalConfig.androidCompileSdkVersion
+    compileSdk Versions.androidCompileSdkVersion
 
     defaultConfig {
         applicationId "com.warko.coctailbrowser"
-        minSdk globalConfig.androidMinSdkVersion
-        targetSdk globalConfig.androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdk Versions.androidMinSdkVersion
+        targetSdk Versions.androidTargetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -51,32 +49,18 @@ android {
     }
 }
 
-//def dependencyGroup(Closure closure) {
-//    closure.delegate = dependencies
-//    return closure
-//}
-//
-//def kotlinSdk = dependencyGroup {
-//    implementation "androidx.core:core-ktx:${ktxVersion}"
-//}
-
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.activity:activity-compose:1.6.1'
-    implementation "androidx.compose.ui:ui:$compose_ui_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation 'androidx.compose.material:material:1.3.1'
+    implementation Deps.kotlinSdk
+    implementation Deps.lifecycleRuntime
+    implementation Deps.activityCompose
+    implementation Deps.composeUi
+    implementation Deps.composeUiPreview
+    implementation Deps.composeMaterial
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+    testImplementation Deps.junit
 
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
- //   presentationDependencies()
-  //  kotlinSdk()
+    debugImplementation Deps.composeUiTooling
+    debugImplementation Deps.composeUiTestManifest
 }
 
 
