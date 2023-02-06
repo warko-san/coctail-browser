@@ -5,8 +5,6 @@ plugins {
     id 'kotlin-parcelize'
 }
 
-apply from: "$project.rootDir/dependencies.gradle"
-
 android {
 
     def globalConfig = rootProject.ext
@@ -77,7 +75,7 @@ dependencies {
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
-    presentationDependencies()
+ //   presentationDependencies()
   //  kotlinSdk()
 }
 

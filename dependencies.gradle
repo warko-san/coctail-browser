@@ -28,7 +28,7 @@ ext {
 
 
 def dependencyGroup(Closure closure) {
-    closure.delegate = dependencies
+    closure.delegate = project.dependencies
     return closure
 }
 
