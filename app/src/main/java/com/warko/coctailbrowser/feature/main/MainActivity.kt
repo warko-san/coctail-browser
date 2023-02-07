@@ -1,4 +1,4 @@
-package com.warko.coctailbrowser
+package com.warko.coctailbrowser.feature.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,9 +10,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.warko.coctailbrowser.common.BaseActivity
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity<MainActivityViewModel>() {
+
+    override val viewModel: MainActivityViewModel by viewModel()
+
+    override fun injectDependencies() {
+        TODO("Not yet implemented")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,6 +34,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    @Composable
+    override fun ScreenContent() {
+        TODO("Not yet implemented")
     }
 }
 
