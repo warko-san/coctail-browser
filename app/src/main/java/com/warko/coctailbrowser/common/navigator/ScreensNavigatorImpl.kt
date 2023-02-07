@@ -1,12 +1,13 @@
 package com.warko.coctailbrowser.common.navigator
 
 import android.content.Context
+import com.warko.coctailbrowser.common.di.qualifier.ActivityContext
 import com.warko.coctailbrowser.feature.cocktailsearch.CocktailSearchActivity
 import com.warko.coctailbrowser.feature.ingredientsearch.IngredientSearchActivity
 import com.warko.coctailbrowser.feature.randomcocktail.RandomCocktailActivity
 import javax.inject.Inject
 
-class ScreensNavigatorImpl @Inject constructor(private val context: Context) : ScreensNavigator {
+class ScreensNavigatorImpl @Inject constructor(@ActivityContext private val context: Context) : ScreensNavigator {
 
     private var currentScreen: Screen = AppScreens.None
 

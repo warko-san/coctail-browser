@@ -2,7 +2,7 @@ package com.warko.coctailbrowser
 
 import android.app.Application
 import com.warko.coctailbrowser.common.di.AppComponent
-import com.warko.coctailbrowser.common.di.AppModule
+import com.warko.coctailbrowser.common.di.module.AppModule
 import com.warko.coctailbrowser.common.di.DaggerAppComponent
 import kotlin.properties.Delegates
 

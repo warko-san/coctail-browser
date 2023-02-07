@@ -1,4 +1,4 @@
-package com.warko.coctailbrowser.common.di
+package com.warko.coctailbrowser.common.di.module
 
 import com.warko.coctailbrowser.common.navigator.ScreensNavigator
 import com.warko.coctailbrowser.common.navigator.ScreensNavigatorImpl

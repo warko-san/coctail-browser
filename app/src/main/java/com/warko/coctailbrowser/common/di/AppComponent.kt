@@ -1,17 +1,14 @@
 package com.warko.coctailbrowser.common.di
 
-import com.warko.coctailbrowser.common.navigator.ScreensNavigator
+import com.warko.coctailbrowser.common.di.module.AppModule
 import dagger.Component
 
 @Component(
     modules = [
-        AppModule::class,
-        NavigatorModule::class
+        AppModule::class
     ]
 )
 interface AppComponent {
-
-    fun provideNavigator(): ScreensNavigator
 
     @Component.Factory
     interface Factory {
