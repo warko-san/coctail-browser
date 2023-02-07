@@ -7,7 +7,7 @@ import com.warko.coctailbrowser.common.mvi.BaseStateHandler
 import com.warko.coctailbrowser.common.mvi.UiEvent
 import com.warko.coctailbrowser.common.mvi.UiState
 
-abstract class BaseViewModel<STATE : UiState, ACTION : AppAction, EVENT : UiEvent>(
+abstract class BaseViewModel<STATE : UiState,  EVENT : UiEvent, ACTION : AppAction,>(
     protected val stateHandler: BaseStateHandler<STATE, ACTION>
 ) : ViewModel() {
 

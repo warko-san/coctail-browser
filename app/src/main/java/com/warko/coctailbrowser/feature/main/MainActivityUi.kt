@@ -9,10 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.warko.coctailbrowser.feature.main.mvi.MainUiEvent
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onEvent: (MainUiEvent) -> Unit
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -26,7 +29,7 @@ fun MainScreen() {
                 .fillMaxSize(), verticalArrangement = Arrangement.Center
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { onEvent(MainUiEvent.SearchCocktailClicked) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
@@ -34,7 +37,7 @@ fun MainScreen() {
                 Text(text = "Search for a cocktail")
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { onEvent(MainUiEvent.SearchIngredientClicked) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
@@ -42,7 +45,7 @@ fun MainScreen() {
                 Text(text = "Search for an ingredient")
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { onEvent(MainUiEvent.GetRandomCocktailClicked) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
@@ -57,6 +60,6 @@ fun MainScreen() {
 @Composable
 fun MainScreenPreview() {
     CoctailBrowserTheme {
-        MainScreen()
+        MainScreen({})
     }
 }
