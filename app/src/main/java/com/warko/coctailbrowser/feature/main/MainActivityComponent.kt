@@ -2,13 +2,17 @@ package com.warko.coctailbrowser.feature.main
 
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModel
+import com.warko.coctailbrowser.common.di.AppComponent
+import com.warko.coctailbrowser.common.di.NavigatorModule
 import com.warko.coctailbrowser.common.di.ViewModelFactoryModule
 import com.warko.coctailbrowser.common.di.ViewModelKey
 import com.warko.coctailbrowser.common.di.scope.ActivityScope
+import com.warko.coctailbrowser.common.navigator.ScreensNavigator
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 
 @ActivityScope
@@ -16,7 +20,8 @@ import dagger.multibindings.IntoMap
     modules = [
         ViewModelFactoryModule::class,
         MainActivityComponent.ActivityBindingsModule::class
-    ]
+    ],
+    dependencies = [AppComponent::class]
 )
 interface MainActivityComponent {
 
@@ -24,7 +29,7 @@ interface MainActivityComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance activity: ComponentActivity): MainActivityComponent
+        fun create(@BindsInstance activity: ComponentActivity, appComponent: AppComponent): MainActivityComponent
     }
 
     @Module

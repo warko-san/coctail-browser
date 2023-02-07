@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 import javax.inject.Inject
 
-abstract class BaseActivity<VIEW_MODEL : BaseViewModel> : ComponentActivity() {
+abstract class BaseActivity<VIEW_MODEL : ViewModel> : ComponentActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

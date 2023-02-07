@@ -7,16 +7,17 @@ import com.warko.coctailbrowser.common.BaseActivity
 
 class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
-    override val viewModel: CocktailSearchViewModel
-        get() = TODO("Not yet implemented")
+    override val viewModel: CocktailSearchViewModel by viewModel()
 
     override fun injectDependencies() {
-        TODO("Not yet implemented")
+        DaggerCocktailSearchActivityComponent.factory()
+            .create(this)
+            .inject(this)
     }
 
     @Composable
     override fun ScreenContent() {
-        TODO("Not yet implemented")
+        SearchCocktailScreen()
     }
 
     companion object {

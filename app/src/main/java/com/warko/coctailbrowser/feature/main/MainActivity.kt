@@ -1,6 +1,7 @@
 package com.warko.coctailbrowser.feature.main
 
 import androidx.compose.runtime.Composable
+import com.warko.coctailbrowser.CocktailApplication
 import com.warko.coctailbrowser.common.BaseActivity
 
 class MainActivity : BaseActivity<MainActivityViewModel>() {
@@ -9,12 +10,12 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
 
     override fun injectDependencies() {
         DaggerMainActivityComponent.factory()
-            .create(this)
+            .create(this, (application as CocktailApplication).component)
             .inject(this)
     }
 
     @Composable
     override fun ScreenContent() {
-        MainScreen()
+        MainScreen(viewModel::handleUiEvent)
     }
 }
