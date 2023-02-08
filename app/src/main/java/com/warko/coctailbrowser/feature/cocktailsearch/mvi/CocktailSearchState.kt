@@ -10,7 +10,3 @@ data class CocktailSearchState(
     val currentScreen: SearchCocktailScreen = SearchCocktailScreen.SEARCH
 ) : UiState
 
-enum class SearchCocktailScreen {
-    SEARCH,
-    DETAILS
-}

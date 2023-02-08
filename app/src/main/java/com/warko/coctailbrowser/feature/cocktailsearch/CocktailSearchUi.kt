@@ -14,14 +14,13 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.warko.coctailbrowser.R
 import com.warko.coctailbrowser.domain.model.Cocktail
-import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchUiEvent
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 
 @Composable
-fun SearchCocktailScreen(
+fun SearchCocktailScreenUi(
     onEvent: (CocktailSearchUiEvent) -> Unit,
-    state: CocktailSearchState
+    cocktails: List<Cocktail>
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -57,7 +56,7 @@ fun SearchCocktailScreen(
                     .padding(top = 32.dp, start = 16.dp, end = 16.dp)
             )
             LazyColumn(modifier = Modifier.padding(top = 16.dp)) {
-                state.cocktails.forEach { cocktail ->
+                cocktails.forEach { cocktail ->
                     item {
                         CocktailItem(cocktail = cocktail) { cocktId ->
                             onEvent(CocktailSearchUiEvent.CocktailClicked(cocktId))
@@ -94,11 +93,51 @@ private fun CocktailItem(cocktail: Cocktail, onClick: (String) -> Unit) {
     }
 }
 
+@Composable
+fun CocktailDetails(
+    onEvent: (CocktailSearchUiEvent) -> Unit,
+    selectedCocktail: Cocktail
+) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar {
+                Icon(
+                    painter = painterResource(id = R.drawable.arrow_back),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .clickable { onEvent(CocktailSearchUiEvent.BackClicked) }
+                )
+                Text(text = "Cocktail details", modifier = Modifier.padding(start = 16.dp))
+            }
+        }) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize()
+        ) {
+            AsyncImage(
+                model = selectedCocktail.imageUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Inside,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .wrapContentSize()
+            )
+            Text(text = selectedCocktail.name, modifier = Modifier.padding(top = 16.dp))
+            Text(text = selectedCocktail.category, modifier = Modifier.padding(top = 8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun SearchCocktailScreenPreview() {
     CoctailBrowserTheme {
-        SearchCocktailScreen({}, CocktailSearchState("", emptyList()))
+        SearchCocktailScreenUi({}, emptyList())
     }
 }
 

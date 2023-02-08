@@ -49,7 +49,7 @@ class CocktailSearchStateHandler @Inject constructor() :
     }
 
     private fun addCocktailDetails(cocktail: Cocktail, oldState: CocktailSearchState) {
-        state = oldState.copy(selectedCocktail = cocktail)
+        state = oldState.copy(selectedCocktail = cocktail, currentScreen = SearchCocktailScreen.DETAILS)
     }
 
 }
