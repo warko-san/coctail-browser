@@ -5,6 +5,7 @@ import com.warko.coctailbrowser.domain.model.Cocktail
 interface CocktailsDataSource {
 
     suspend fun loadCocktails(term: String): List<Cocktail>
+    suspend fun loadCocktailsByIngredient(term: String): List<Cocktail>
     suspend fun loadCocktailDetails(cocktailId: String): Cocktail
     suspend fun loadRandomCocktail(): Cocktail
 
