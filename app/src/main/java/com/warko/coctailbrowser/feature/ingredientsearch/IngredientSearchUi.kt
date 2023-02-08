@@ -1,4 +1,4 @@
-package com.warko.coctailbrowser.feature.cocktailsearch
+package com.warko.coctailbrowser.feature.ingredientsearch
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,12 +14,14 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.warko.coctailbrowser.R
 import com.warko.coctailbrowser.domain.model.Cocktail
+import com.warko.coctailbrowser.feature.cocktailsearch.CocktailItem
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchUiEvent
+import com.warko.coctailbrowser.feature.ingredientsearch.mvi.IngredientSearchUiEvent
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 
 @Composable
-fun SearchCocktailScreenUi(
-    onEvent: (CocktailSearchUiEvent) -> Unit,
+fun SearchIngredientScreenUi(
+    onEvent: (IngredientSearchUiEvent) -> Unit,
     cocktails: List<Cocktail>
 ) {
     Scaffold(
@@ -31,7 +33,7 @@ fun SearchCocktailScreenUi(
                     contentDescription = null,
                     modifier = Modifier
                         .padding(start = 16.dp)
-                        .clickable { onEvent(CocktailSearchUiEvent.BackClicked) }
+                        .clickable { onEvent(IngredientSearchUiEvent.BackClicked) }
                 )
                 Text(text = "Search cocktail", modifier = Modifier.padding(start = 16.dp))
             }
@@ -48,7 +50,7 @@ fun SearchCocktailScreenUi(
                 value = text,
                 onValueChange = { term ->
                     text = term
-                    onEvent(CocktailSearchUiEvent.TextEntered(term))
+                    onEvent(IngredientSearchUiEvent.TextEntered(term))
                 },
                 singleLine = true,
                 modifier = Modifier
@@ -59,7 +61,7 @@ fun SearchCocktailScreenUi(
                 cocktails.forEach { cocktail ->
                     item {
                         CocktailItem(cocktail = cocktail) { cocktId ->
-                            onEvent(CocktailSearchUiEvent.CocktailClicked(cocktId))
+                            onEvent(IngredientSearchUiEvent.CocktailClicked(cocktId))
                         }
                     }
                 }
@@ -69,33 +71,8 @@ fun SearchCocktailScreenUi(
 }
 
 @Composable
-fun CocktailItem(cocktail: Cocktail, onClick: (String) -> Unit) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .clickable {
-                onClick(cocktail.id)
-            }) {
-        AsyncImage(
-            model = cocktail.imageUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Inside,
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-                .height(120.dp)
-        )
-        Text(text = cocktail.name, modifier = Modifier.padding(top = 16.dp))
-        Text(text = cocktail.category, modifier = Modifier.padding(top = 8.dp))
-        Spacer(modifier = Modifier.height(16.dp))
-    }
-}
-
-@Composable
 fun CocktailDetails(
-    onEvent: (CocktailSearchUiEvent) -> Unit,
+    onEvent: (IngredientSearchUiEvent) -> Unit,
     selectedCocktail: Cocktail
 ) {
     Scaffold(
@@ -107,7 +84,7 @@ fun CocktailDetails(
                     contentDescription = null,
                     modifier = Modifier
                         .padding(start = 16.dp)
-                        .clickable { onEvent(CocktailSearchUiEvent.BackClicked) }
+                        .clickable { onEvent(IngredientSearchUiEvent.BackClicked) }
                 )
                 Text(text = "Cocktail details", modifier = Modifier.padding(start = 16.dp))
             }
@@ -135,9 +112,9 @@ fun CocktailDetails(
 
 @Preview(showBackground = true)
 @Composable
-private fun SearchCocktailScreenPreview() {
+private fun SearchIngredientScreenPreview() {
     CoctailBrowserTheme {
-        SearchCocktailScreenUi({}, emptyList())
+        SearchIngredientScreenUi({}, emptyList())
     }
 }
 

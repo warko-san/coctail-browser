@@ -32,15 +32,15 @@ class CocktailSearchStateHandler @Inject constructor() :
 
     private fun resolveState(oldState: CocktailSearchState): Effect {
         return when (oldState.currentScreen) {
-            SearchCocktailScreen.DETAILS -> {
+            CocktailSearchScreen.DETAILS -> {
                 state =
                     oldState.copy(
-                        currentScreen = SearchCocktailScreen.SEARCH,
+                        currentScreen = CocktailSearchScreen.SEARCH,
                         selectedCocktail = null
                     )
                 NoEffect
             }
-            SearchCocktailScreen.SEARCH -> ExitEffect
+            CocktailSearchScreen.SEARCH -> ExitEffect
         }
     }
 
@@ -49,7 +49,7 @@ class CocktailSearchStateHandler @Inject constructor() :
     }
 
     private fun addCocktailDetails(cocktail: Cocktail, oldState: CocktailSearchState) {
-        state = oldState.copy(selectedCocktail = cocktail, currentScreen = SearchCocktailScreen.DETAILS)
+        state = oldState.copy(selectedCocktail = cocktail, currentScreen = CocktailSearchScreen.DETAILS)
     }
 
 }
