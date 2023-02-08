@@ -17,7 +17,7 @@ class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
     @Composable
     override fun ScreenContent() {
-        SearchCocktailScreen()
+        SearchCocktailScreen(viewModel::handleUiEvent, emptyList())
     }
 
     companion object {

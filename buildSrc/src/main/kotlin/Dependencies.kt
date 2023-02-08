@@ -55,7 +55,6 @@ object Deps {
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.0.0"
     const val lifecycleViewModelExtensions = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:2.0.0"
-    const val glide = "com.github.bumptech.glide:glide:$glideVersion"
     const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
     const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
@@ -70,4 +69,5 @@ object Deps {
     const val fireAnal = "com.google.firebase:firebase-analytics:17.2.2"
     const val crashlytics = "com.google.firebase:firebase-crashlytics:17.1.0"
     const val junit = "junit:junit:4.13.2"
+    const val coilImage = "io.coil-kt:coil-compose:2.2.2"
 }

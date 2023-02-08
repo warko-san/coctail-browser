@@ -67,8 +67,7 @@ dependencies {
 
     implementation Deps.leakCanary
 
-    implementation Deps.glide
-    kapt Deps.glideCompiler
+    implementation Deps.coilImage
 
     implementation Deps.retrofit
     implementation Deps.loggingInterceptor
