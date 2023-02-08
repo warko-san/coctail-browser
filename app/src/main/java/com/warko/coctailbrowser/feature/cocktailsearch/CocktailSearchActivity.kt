@@ -3,7 +3,13 @@ package com.warko.coctailbrowser.feature.cocktailsearch
 import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import com.warko.coctailbrowser.CocktailApplication
 import com.warko.coctailbrowser.common.BaseActivity
+import com.warko.coctailbrowser.common.di.module.ActivityModule
+import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
+import com.warko.coctailbrowser.feature.cocktailsearch.mvi.SearchCocktailScreen
 
 class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
@@ -11,13 +17,22 @@ class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
     override fun injectDependencies() {
         DaggerCocktailSearchActivityComponent.factory()
-            .create(this)
+            .create(ActivityModule(this), (application as CocktailApplication).component)
             .inject(this)
     }
 
     @Composable
     override fun ScreenContent() {
-        SearchCocktailScreen()
+        val state by viewModel.uiStateData.observeAsState(CocktailSearchState())
+
+        when(state.currentScreen) {
+            SearchCocktailScreen.SEARCH -> {
+                SearchCocktailScreenUi(viewModel::handleUiEvent, state.cocktails)
+            }
+            SearchCocktailScreen.DETAILS -> {
+                CocktailDetails(viewModel::handleUiEvent, state.selectedCocktail!!)
+            }
+        }
     }
 
     companion object {

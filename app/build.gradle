@@ -57,6 +57,7 @@ dependencies {
     implementation Deps.composeUi
     implementation Deps.composeUiPreview
     implementation Deps.composeMaterial
+    implementation Deps.composeRuntime
 
     implementation Deps.dagger
     kapt Deps.daggerCompiler
@@ -67,10 +68,10 @@ dependencies {
 
     implementation Deps.leakCanary
 
-    implementation Deps.glide
-    kapt Deps.glideCompiler
+    implementation Deps.coilImage
 
     implementation Deps.retrofit
+    implementation Deps.gsonConverter
     implementation Deps.loggingInterceptor
     implementation Deps.okHttp
     implementation Deps.gson
