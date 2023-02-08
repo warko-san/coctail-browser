@@ -49,6 +49,7 @@ object Deps {
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
     const val composeUi = "androidx.compose.ui:ui:$composeUiVersion"
     const val composeUiPreview = "androidx.compose.ui:ui-tooling-preview:$composeUiVersion"
+    const val composeRuntime = "androidx.compose.runtime:runtime-livedata:$composeUiVersion"
     const val composeMaterial = "androidx.compose.material:material:1.3.1"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:$composeUiVersion"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:$composeUiVersion"

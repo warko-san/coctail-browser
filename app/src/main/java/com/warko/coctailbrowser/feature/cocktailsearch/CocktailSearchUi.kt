@@ -15,13 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.warko.coctailbrowser.domain.model.Cocktail
+import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchUiEvent
 import com.warko.coctailbrowser.ui.theme.CoctailBrowserTheme
 
 @Composable
 fun SearchCocktailScreen(
     onEvent: (CocktailSearchUiEvent) -> Unit,
-    cocktails: List<Cocktail>
+    state: CocktailSearchState
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -51,7 +52,7 @@ fun SearchCocktailScreen(
             )
         }
         LazyColumn(modifier = Modifier.padding(top = 16.dp)) {
-            cocktails.forEach { cocktail ->
+            state.cocktails.forEach { cocktail ->
                 item {
                     CocktailItem(cocktail = cocktail) { cocktId ->
                         onEvent(CocktailSearchUiEvent.CocktailClicked(cocktId))
@@ -90,7 +91,7 @@ private fun CocktailItem(cocktail: Cocktail, onClick: (String) -> Unit) {
 @Composable
 private fun SearchCocktailScreenPreview() {
     CoctailBrowserTheme {
-        SearchCocktailScreen({}, emptyList())
+        SearchCocktailScreen({}, CocktailSearchState("", emptyList()))
     }
 }
 

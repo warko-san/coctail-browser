@@ -17,4 +17,9 @@ abstract class BaseStateHandler<STATE : UiState, ACTION : AppAction> {
         return effect
     }
 
+    protected inline fun doWithoutEffect(block: () -> Unit): Effect {
+        block()
+        return NoEffect()
+    }
+
 }

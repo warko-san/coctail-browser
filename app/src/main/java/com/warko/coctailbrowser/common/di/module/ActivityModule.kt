@@ -1,5 +1,6 @@
 package com.warko.coctailbrowser.common.di.module
 
+import android.app.Activity
 import android.content.Context
 import androidx.activity.ComponentActivity
 import com.warko.coctailbrowser.common.di.qualifier.ActivityContext
@@ -14,4 +15,8 @@ class ActivityModule(private val activity: ComponentActivity) {
     @ActivityContext
     @ActivityScope
     fun provideActivityContext(): Context = activity
+
+    @Provides
+    @ActivityScope
+    fun provideActivity(): Activity = activity
 }

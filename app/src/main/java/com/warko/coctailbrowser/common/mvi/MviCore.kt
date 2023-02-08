@@ -9,3 +9,5 @@ interface AppAction
 interface Effect
 
 class EmptyUiState : UiState
+
+class NoEffect : Effect

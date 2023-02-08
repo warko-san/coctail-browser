@@ -3,7 +3,10 @@ package com.warko.coctailbrowser.feature.cocktailsearch
 import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import com.warko.coctailbrowser.common.BaseActivity
+import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
 
 class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
@@ -17,7 +20,9 @@ class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
     @Composable
     override fun ScreenContent() {
-        SearchCocktailScreen(viewModel::handleUiEvent, emptyList())
+        val state by viewModel.uiStateData.observeAsState(CocktailSearchState())
+
+        SearchCocktailScreen(viewModel::handleUiEvent, state)
     }
 
     companion object {

@@ -57,6 +57,7 @@ dependencies {
     implementation Deps.composeUi
     implementation Deps.composeUiPreview
     implementation Deps.composeMaterial
+    implementation Deps.composeRuntime
 
     implementation Deps.dagger
     kapt Deps.daggerCompiler
