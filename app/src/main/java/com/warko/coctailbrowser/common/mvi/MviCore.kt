@@ -10,4 +10,5 @@ interface Effect
 
 class EmptyUiState : UiState
 
-class NoEffect : Effect
+object NoEffect : Effect
+object ExitEffect : Effect

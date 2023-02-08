@@ -5,5 +5,12 @@ import com.warko.coctailbrowser.domain.model.Cocktail
 
 data class CocktailSearchState(
     val term: String = "",
-    val cocktails: List<Cocktail> = emptyList()
+    val cocktails: List<Cocktail> = emptyList(),
+    val selectedCocktail: Cocktail? = null,
+    val currentScreen: SearchCocktailScreen = SearchCocktailScreen.SEARCH
 ) : UiState
+
+enum class SearchCocktailScreen {
+    SEARCH,
+    DETAILS
+}

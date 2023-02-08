@@ -12,4 +12,9 @@ class RemoteCocktailDataSource @Inject constructor(
     override suspend fun loadCocktails(term: String): List<Cocktail> {
         return cocktailsApi.loadCocktails(term).drinks.toDomain()
     }
+
+    override suspend fun loadCocktailDetails(cocktailId: String): Cocktail {
+        return cocktailsApi.loadCocktailDetails(cocktailId).drinks.toDomain().first()
+    }
+
 }
