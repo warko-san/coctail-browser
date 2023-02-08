@@ -71,6 +71,7 @@ dependencies {
     implementation Deps.coilImage
 
     implementation Deps.retrofit
+    implementation Deps.gsonConverter
     implementation Deps.loggingInterceptor
     implementation Deps.okHttp
     implementation Deps.gson

@@ -7,7 +7,7 @@ fun List<RemoteCocktail>.toDomain(): List<Cocktail> =
     map { Cocktail(
         it.id,
         it.name,
-        it.tagsString.split(","),
+        it.tagsString?.split(",") ?: emptyList(),
         it.category,
         it.videoUrl,
         it.imageUrl,

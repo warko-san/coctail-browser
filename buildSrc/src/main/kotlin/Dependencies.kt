@@ -58,6 +58,7 @@ object Deps {
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:2.0.0"
     const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
     const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${okhttp3Version}"
     const val gson = "com.google.code.gson:gson:2.9.0"

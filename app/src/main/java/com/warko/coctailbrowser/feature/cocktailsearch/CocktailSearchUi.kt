@@ -3,17 +3,16 @@ package com.warko.coctailbrowser.feature.cocktailsearch
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.warko.coctailbrowser.R
 import com.warko.coctailbrowser.domain.model.Cocktail
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchUiEvent
@@ -27,7 +26,14 @@ fun SearchCocktailScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopAppBar() {
+            TopAppBar {
+                Icon(
+                    painter = painterResource(id = R.drawable.arrow_back),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .clickable { onEvent(CocktailSearchUiEvent.BackClicked) }
+                )
                 Text(text = "Search cocktail", modifier = Modifier.padding(start = 16.dp))
             }
         }) {
@@ -41,7 +47,7 @@ fun SearchCocktailScreen(
             }
             TextField(
                 value = text,
-                onValueChange = {term ->
+                onValueChange = { term ->
                     text = term
                     onEvent(CocktailSearchUiEvent.TextEntered(term))
                 },
@@ -50,12 +56,12 @@ fun SearchCocktailScreen(
                     .fillMaxWidth()
                     .padding(top = 32.dp, start = 16.dp, end = 16.dp)
             )
-        }
-        LazyColumn(modifier = Modifier.padding(top = 16.dp)) {
-            state.cocktails.forEach { cocktail ->
-                item {
-                    CocktailItem(cocktail = cocktail) { cocktId ->
-                        onEvent(CocktailSearchUiEvent.CocktailClicked(cocktId))
+            LazyColumn(modifier = Modifier.padding(top = 16.dp)) {
+                state.cocktails.forEach { cocktail ->
+                    item {
+                        CocktailItem(cocktail = cocktail) { cocktId ->
+                            onEvent(CocktailSearchUiEvent.CocktailClicked(cocktId))
+                        }
                     }
                 }
             }
@@ -69,7 +75,7 @@ private fun CocktailItem(cocktail: Cocktail, onClick: (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .wrapContentHeight()
             .clickable {
                 onClick(cocktail.id)
             }) {
@@ -84,6 +90,7 @@ private fun CocktailItem(cocktail: Cocktail, onClick: (String) -> Unit) {
         )
         Text(text = cocktail.name, modifier = Modifier.padding(top = 16.dp))
         Text(text = cocktail.category, modifier = Modifier.padding(top = 8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 

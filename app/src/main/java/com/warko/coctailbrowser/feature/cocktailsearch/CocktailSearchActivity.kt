@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import com.warko.coctailbrowser.CocktailApplication
 import com.warko.coctailbrowser.common.BaseActivity
+import com.warko.coctailbrowser.common.di.module.ActivityModule
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
 
 class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
@@ -14,7 +16,7 @@ class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
     override fun injectDependencies() {
         DaggerCocktailSearchActivityComponent.factory()
-            .create(this)
+            .create(ActivityModule(this), (application as CocktailApplication).component)
             .inject(this)
     }
 
