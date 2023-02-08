@@ -17,4 +17,7 @@ class RemoteCocktailDataSource @Inject constructor(
         return cocktailsApi.loadCocktailDetails(cocktailId).drinks.toDomain().first()
     }
 
+    override suspend fun loadRandomCocktail(): Cocktail {
+        return cocktailsApi.loadRandomCocktail().drinks.toDomain().first()
+    }
 }
