@@ -9,7 +9,7 @@ import com.warko.coctailbrowser.CocktailApplication
 import com.warko.coctailbrowser.common.BaseActivity
 import com.warko.coctailbrowser.common.di.module.ActivityModule
 import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchState
-import com.warko.coctailbrowser.feature.cocktailsearch.mvi.SearchCocktailScreen
+import com.warko.coctailbrowser.feature.cocktailsearch.mvi.CocktailSearchScreen
 
 class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
 
@@ -26,10 +26,10 @@ class CocktailSearchActivity : BaseActivity<CocktailSearchViewModel>() {
         val state by viewModel.uiStateData.observeAsState(CocktailSearchState())
 
         when(state.currentScreen) {
-            SearchCocktailScreen.SEARCH -> {
+            CocktailSearchScreen.SEARCH -> {
                 SearchCocktailScreenUi(viewModel::handleUiEvent, state.cocktails)
             }
-            SearchCocktailScreen.DETAILS -> {
+            CocktailSearchScreen.DETAILS -> {
                 CocktailDetails(viewModel::handleUiEvent, state.selectedCocktail!!)
             }
         }

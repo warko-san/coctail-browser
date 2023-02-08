@@ -7,6 +7,6 @@ data class CocktailSearchState(
     val term: String = "",
     val cocktails: List<Cocktail> = emptyList(),
     val selectedCocktail: Cocktail? = null,
-    val currentScreen: SearchCocktailScreen = SearchCocktailScreen.SEARCH
+    val currentScreen: CocktailSearchScreen = CocktailSearchScreen.SEARCH
 ) : UiState
 

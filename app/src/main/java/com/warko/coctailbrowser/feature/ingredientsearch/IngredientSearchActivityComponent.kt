@@ -1,4 +1,4 @@
-package com.warko.coctailbrowser.feature.cocktailsearch
+package com.warko.coctailbrowser.feature.ingredientsearch
 
 import androidx.lifecycle.ViewModel
 import com.warko.coctailbrowser.common.di.AppComponent
@@ -22,21 +22,21 @@ import dagger.multibindings.IntoMap
         NavigatorModule::class,
         DataSourceModule::class,
         UseCaseModule::class,
-        CocktailSearchActivityComponent.ActivityBindingsModule::class
+        IngredientSearchActivityComponent.ActivityBindingsModule::class
     ], dependencies = [
         AppComponent::class
     ]
 )
-interface CocktailSearchActivityComponent {
+interface IngredientSearchActivityComponent {
 
-    fun inject(activity: CocktailSearchActivity)
+    fun inject(activity: IngredientSearchActivity)
 
     @Component.Factory
     interface Factory {
         fun create(
             activityModule: ActivityModule,
             appComponent: AppComponent
-        ): CocktailSearchActivityComponent
+        ): IngredientSearchActivityComponent
     }
 
     @Module
@@ -44,8 +44,8 @@ interface CocktailSearchActivityComponent {
 
         @Binds
         @IntoMap
-        @ViewModelKey(CocktailSearchViewModel::class)
-        fun bindCocktSearchViewModel(viewModel: CocktailSearchViewModel): ViewModel
+        @ViewModelKey(IngredientSearchViewModel::class)
+        fun bindIngredientSearchViewModel(viewModel: IngredientSearchViewModel): ViewModel
 
     }
 
